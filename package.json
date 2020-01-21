@@ -1,6 +1,14 @@
 {
   "name": "vue-displace",
-  "version": "0.2.1",
+  "keywords": [
+    "vue-displace",
+    "vuejs",
+    "vue",
+    "draggable",
+    "displacejs",
+    "directive"
+	],
+  "version": "0.2.2",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -9,7 +17,16 @@
     "lint": "vue-cli-service lint"
   },
   "main": "dist/vue-displace.common.js",
-	"unpkg": "dist/vue-displace.umd.min.js",
+  "unpkg": "dist/vue-displace.umd.min.js",
+  "author": "Ben Sladden",
+  "repository": {
+		"type": "git",
+		"url": "https://github.com/bensladden/vue-displace.git"
+	},
+  "license": "MIT",
+  "files": [
+		"dist"
+	],
   "dependencies": {
     "displacejs": "^1.4.1"
   },
