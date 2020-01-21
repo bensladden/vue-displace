@@ -4,9 +4,19 @@
       im a div please drag me
     </div>
 
-    <div :id="2" v-displace="{ customMove }" @onMouseDown="log" class="item">
+    <div
+      v-if="!showHide"
+      :id="2"
+      v-displace="{ customMove }"
+      @onMouseDown="log"
+      class="item"
+    >
       im a div with custom move please drag me
     </div>
+    <div class="item">
+      im a not draggable
+    </div>
+    <button @click="showHide = !showHide">Toggle</button>
   </div>
 </template>
 
@@ -17,6 +27,11 @@ export default {
   name: "app",
   directives: {
     displace
+  },
+  data() {
+    return {
+      showHide: true
+    };
   },
   methods: {
     log(e) {

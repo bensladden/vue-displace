@@ -5,6 +5,12 @@ function bind(el, binding, vnode) {
   if (binding.value) {
     options = binding.value;
   }
+  let index = d.findIndex(i => {
+    i.id == el.id;
+  });
+  if (index >= 0) {
+    throw "element id must be unique";
+  }
   options.onMouseDown = (el, e) => {
     if (vnode.componentInstance) {
       vnode.componentInstance.$emit("onMouseDown", {
