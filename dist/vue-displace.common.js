@@ -1641,6 +1641,14 @@ function bind(el, binding, vnode) {
     options = binding.value;
   }
 
+  var index = d.findIndex(function (i) {
+    i.id == el.id;
+  });
+
+  if (index >= 0) {
+    throw "element id must be unique";
+  }
+
   options.onMouseDown = function (el, e) {
     if (vnode.componentInstance) {
       vnode.componentInstance.$emit("onMouseDown", {
