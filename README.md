@@ -1,5 +1,7 @@
 # vue-displace
 
+Vue Directive to allow dragging elements or components. Uses [displacejs](https://github.com/catc/displace) under the hood
+
 <p align="center">
 	<img src="https://flat.badgen.net/github/branches/bensladden/vue-displace" alt="branches">
 	<img src="https://flat.badgen.net/github/releases/bensladden/vue-displace" alt="releases">
@@ -7,8 +9,6 @@
 	<img src="https://flat.badgen.net/github/last-commit/bensladden/vue-displace" alt="lastCommit">
 	<img src="https://flat.badgen.net/github/license/bensladden/vue-displace" alt="license">
 </p>
-
-Vue Directive to allow dragging elements or components. Uses [displacejs](https://github.com/catc/displace) under the hood
 
 ## ⚙️ Installation
 ```sh
