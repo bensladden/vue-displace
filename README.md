@@ -15,7 +15,7 @@ Vue Directive to allow dragging elements or components. Uses [displacejs](https:
 $ npm install vue-displace
 ```
 ## 📄 Documents
-
+[Example](https://codesandbox.io/s/vue-displace-myxdb)
 [displacejs](https://github.com/catc/displace)
 
 ## 🚀 How to use in Vue
