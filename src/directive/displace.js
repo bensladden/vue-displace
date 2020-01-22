@@ -1,5 +1,6 @@
 let displace = require("displacejs");
 var d = [];
+
 function bind(el, binding, vnode) {
   let options = {};
   if (binding.value) {
@@ -82,6 +83,10 @@ function bind(el, binding, vnode) {
     d.push({ id: el.id, disp: displace(el, options) });
   });
 }
+function componentUpdated(el, binding, vnode) {
+  unbind(el);
+  bind(el, binding, vnode);
+}
 
 function unbind(el) {
   let index = d.findIndex(i => {
@@ -96,5 +101,6 @@ function unbind(el) {
 
 export default {
   bind,
-  unbind
+  unbind,
+  componentUpdated
 };

@@ -21,11 +21,13 @@
   <div id="app">
     <div class="demo__boxes box-1">
       <span class="demo__tag">Box 1</span>
-      <div class="demo__one box-2">
+      <div ref="box2" id="box2" class="demo__one box-2">
         <span class="demo__tag">Box 2</span>
         <div class="demo__two box-3">
           <span class="demo__tag">Box 3</span>
-          <div v-displace="{ constrain: true }" class="moveable">Drag me</div>
+          <div v-displace="options" class="moveable">
+            <span ref="handle" id="handle">Drag me</span>
+          </div>
         </div>
       </div>
     </div>
@@ -42,7 +44,8 @@ export default {
   },
   data() {
     return {
-      showHide: true
+      showHide: true,
+      options: null
     };
   },
   methods: {
@@ -54,6 +57,19 @@ export default {
       el.style.left = x + "px";
       el.style.top = y + "px";
     }
+  },
+  computed: {
+    box2() {
+      return document.getElementById("box2");
+    }
+  },
+  async mounted() {
+    await this.$nextTick();
+    this.options = {
+      constrain: true,
+      relativeTo: this.$refs.box2,
+      handle: this.$refs.handle
+    };
   }
 };
 </script>
