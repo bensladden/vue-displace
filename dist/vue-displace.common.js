@@ -1766,6 +1766,11 @@ function bind(el, binding, vnode) {
   });
 }
 
+function componentUpdated(el, binding, vnode) {
+  unbind(el);
+  bind(el, binding, vnode);
+}
+
 function unbind(el) {
   var index = d.findIndex(function (i) {
     return i.id === el.id;
@@ -1780,7 +1785,8 @@ function unbind(el) {
 
 /* harmony default export */ var directive_displace = ({
   bind: bind,
-  unbind: unbind
+  unbind: unbind,
+  componentUpdated: componentUpdated
 });
 // CONCATENATED MODULE: ./src/index.js
 
