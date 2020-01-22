@@ -1755,11 +1755,14 @@ function bind(el, binding, vnode) {
         }
       }));
     }
-  };
+  }; //https://github.com/vuejs/vue/issues/2887
 
-  d.push({
-    id: el.id,
-    disp: displace(el, options)
+
+  vnode.context.$nextTick(function () {
+    d.push({
+      id: el.id,
+      disp: displace(el, options)
+    });
   });
 }
 

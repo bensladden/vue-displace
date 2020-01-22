@@ -77,7 +77,10 @@ function bind(el, binding, vnode) {
       );
     }
   };
-  d.push({ id: el.id, disp: displace(el, options) });
+  //https://github.com/vuejs/vue/issues/2887
+  vnode.context.$nextTick(() => {
+    d.push({ id: el.id, disp: displace(el, options) });
+  });
 }
 
 function unbind(el) {
