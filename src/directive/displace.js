@@ -80,12 +80,41 @@ function bind(el, binding, vnode) {
   };
   //https://github.com/vuejs/vue/issues/2887
   vnode.context.$nextTick(() => {
-    d.push({ id: el.id, disp: displace(el, options) });
+    d.push({
+      id: el.id,
+      disp: displace(el, options),
+      opts: JSON.stringify(options)
+    });
   });
 }
+
+function areDifferent(a, b) {
+  if (typeof a !== typeof b) {
+    return true;
+  }
+  if (typeof a === "object") {
+    if (Object.keys(a).length !== Object.keys(b).length) {
+      return true;
+    }
+    for (let key in a) {
+      if (a[key] !== b[key]) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
 function componentUpdated(el, binding, vnode) {
-  unbind(el);
-  bind(el, binding, vnode);
+  let newOpts = binding.value;
+  let index = d.findIndex(i => {
+    return i.id === el.id;
+  });
+
+  let oldOpts = d[index].opts;
+  if (areDifferent(newOpts, oldOpts)) {
+    unbind(el);
+    bind(el, binding, vnode);
+  }
 }
 
 function unbind(el) {
