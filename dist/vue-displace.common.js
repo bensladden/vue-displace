@@ -2801,15 +2801,20 @@ function areDifferent(a, b) {
 }
 
 function componentUpdated(el, binding, vnode) {
-  var newOpts = binding.value;
-  var index = d.findIndex(function (i) {
-    return i.id === el.id;
-  });
-  var oldOpts = d[index].opts;
+  var newOpts = binding.value; // Check if componentUpdated is running before initial bind
 
-  if (areDifferent(newOpts, oldOpts)) {
-    unbind(el);
+  if (d.length == 0) {
     bind(el, binding, vnode);
+  } else {
+    var index = d.findIndex(function (i) {
+      return i.id === el.id;
+    });
+    var oldOpts = d[index].opts;
+
+    if (areDifferent(newOpts, oldOpts)) {
+      unbind(el);
+      bind(el, binding, vnode);
+    }
   }
 }
 

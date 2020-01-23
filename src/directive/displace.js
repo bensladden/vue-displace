@@ -99,14 +99,19 @@ function areDifferent(a, b) {
 }
 function componentUpdated(el, binding, vnode) {
   let newOpts = binding.value;
-  let index = d.findIndex(i => {
-    return i.id === el.id;
-  });
-
-  let oldOpts = d[index].opts;
-  if (areDifferent(newOpts, oldOpts)) {
-    unbind(el);
+  // Check if componentUpdated is running before initial bind
+  if (d.length == 0) {
     bind(el, binding, vnode);
+  } else {
+    let index = d.findIndex(i => {
+      return i.id === el.id;
+    });
+
+    let oldOpts = d[index].opts;
+    if (areDifferent(newOpts, oldOpts)) {
+      unbind(el);
+      bind(el, binding, vnode);
+    }
   }
 }
 

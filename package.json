@@ -7,7 +7,7 @@
     "draggable",
     "displacejs",
     "directive"
-	],
+  ],
   "version": "0.2.6",
   "private": false,
   "scripts": {
@@ -20,13 +20,13 @@
   "unpkg": "dist/vue-displace.umd.min.js",
   "author": "Ben Sladden",
   "repository": {
-		"type": "git",
-		"url": "https://github.com/bensladden/vue-displace.git"
-	},
+    "type": "git",
+    "url": "https://github.com/bensladden/vue-displace.git"
+  },
   "license": "MIT",
   "files": [
-		"dist"
-	],
+    "dist"
+  ],
   "dependencies": {
     "displacejs": "^1.4.1"
   },
