@@ -1830,27 +1830,6 @@ module.exports = function (name) {
 
 /***/ }),
 
-/***/ "b64b":
-/***/ (function(module, exports, __webpack_require__) {
-
-var $ = __webpack_require__("23e7");
-var toObject = __webpack_require__("7b0b");
-var nativeKeys = __webpack_require__("df75");
-var fails = __webpack_require__("d039");
-
-var FAILS_ON_PRIMITIVES = fails(function () { nativeKeys(1); });
-
-// `Object.keys` method
-// https://tc39.github.io/ecma262/#sec-object.keys
-$({ target: 'Object', stat: true, forced: FAILS_ON_PRIMITIVES }, {
-  keys: function keys(it) {
-    return nativeKeys(toObject(it));
-  }
-});
-
-
-/***/ }),
-
 /***/ "b727":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2631,9 +2610,6 @@ var es_array_find_index = __webpack_require__("c740");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.splice.js
 var es_array_splice = __webpack_require__("a434");
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.keys.js
-var es_object_keys = __webpack_require__("b64b");
-
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.js
 var es_symbol = __webpack_require__("a4d3");
 
@@ -2680,7 +2656,6 @@ function _typeof(obj) {
   return _typeof(obj);
 }
 // CONCATENATED MODULE: ./src/directive/displace.js
-
 
 
 
@@ -2823,20 +2798,12 @@ function bind(el, binding, vnode) {
 }
 
 function areDifferent(a, b) {
-  if (_typeof(a) !== _typeof(b)) {
+  if (_typeof(a.relativeTo) !== _typeof(b.relativeTo)) {
     return true;
   }
 
-  if (_typeof(a) === "object") {
-    if (Object.keys(a).length !== Object.keys(b).length) {
-      return true;
-    }
-
-    for (var key in a) {
-      if (a[key] !== b[key]) {
-        return true;
-      }
-    }
+  if (_typeof(a.handle) !== _typeof(b.handle)) {
+    return true;
   }
 
   return false;
