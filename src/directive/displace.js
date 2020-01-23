@@ -89,18 +89,11 @@ function bind(el, binding, vnode) {
 }
 
 function areDifferent(a, b) {
-  if (typeof a !== typeof b) {
+  if (typeof a.relativeTo !== typeof b.relativeTo) {
     return true;
   }
-  if (typeof a === "object") {
-    if (Object.keys(a).length !== Object.keys(b).length) {
-      return true;
-    }
-    for (let key in a) {
-      if (a[key] !== b[key]) {
-        return true;
-      }
-    }
+  if (typeof a.handle !== typeof b.handle) {
+    return true;
   }
   return false;
 }
