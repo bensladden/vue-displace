@@ -102,11 +102,12 @@ function componentUpdated(el, binding, vnode) {
   let index = d.findIndex(i => {
     return i.id === el.id;
   });
-
-  let oldOpts = d[index].opts;
-  if (areDifferent(newOpts, oldOpts)) {
-    unbind(el);
-    bind(el, binding, vnode);
+  if (index > -1) {
+    let oldOpts = d[index].opts;
+    if (areDifferent(newOpts, oldOpts)) {
+      unbind(el);
+      bind(el, binding, vnode);
+    }
   }
 }
 
