@@ -2805,11 +2805,14 @@ function componentUpdated(el, binding, vnode) {
   var index = d.findIndex(function (i) {
     return i.id === el.id;
   });
-  var oldOpts = d[index].opts;
 
-  if (areDifferent(newOpts, oldOpts)) {
-    unbind(el);
-    bind(el, binding, vnode);
+  if (index > -1) {
+    var oldOpts = d[index].opts;
+
+    if (areDifferent(newOpts, oldOpts)) {
+      unbind(el);
+      bind(el, binding, vnode);
+    }
   }
 }
 
